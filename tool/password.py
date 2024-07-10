@@ -41,7 +41,7 @@ class Person(object):
 
     def __init__(self):
         try:
-            conf = json.load(open("passwd.json", encoding="utf-8"))
+            conf = json.load(open("../tool_data/passwd.json", encoding="utf-8"))
             self.person ={
                 'name': conf['name'],
                 'phone': conf['phone'],
