@@ -3,6 +3,7 @@ import argparse
 from nmapscan import nmapScan, subnetScan
 from password import Worker
 from webdirscan import Manager
+from sqlburp import SqlBurp
 
 
 def donmapscan(args):
@@ -17,6 +18,12 @@ def dopasswdgen(args):
 def dowebdirscan(args):
     webscan = Manager(args.output)
     webscan.start()
+
+def dosqlburp(args):
+
+    sqlburp = SqlBurp(args.host, args.port)
+    sqlburp.start_sql_brup()
+
 
 
 def main():
@@ -39,6 +46,12 @@ def main():
     webscan = subparser.add_parser("webscan", help="web目录扫描,web域名配置文件websites.txt")
     webscan.add_argument("-o", "--output", help="指定输出文件")
     webscan.set_defaults(func=dowebdirscan)
+
+    # 数据库用户名密码baopo
+    sqlburp = subparser.add_parser("sqlburp", help="mysql数据库用户名密码爆破，导入mysql_user.txt、mysql_pass.txt数据")
+    sqlburp.add_argument("host", help="数据库IP地址,like:127.0.0.1")
+    sqlburp.add_argument("port", type=int, help="数据库端口,like:3306")
+    sqlburp.set_defaults(func=dosqlburp)
 
 
     args = parser.parse_args()
