@@ -7,7 +7,7 @@ import logging
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import wait
-from web_dir_scan.util import Logger
+from commons import Logger
 from pypinyin import lazy_pinyin
 
 '''

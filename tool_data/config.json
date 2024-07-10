@@ -1,0 +1,5 @@
+{
+    "website" : "../tool_data/websites.txt",
+    "dic_folder" : "../tool_data/dic_folder",
+    "threads_num" : 16
+}
