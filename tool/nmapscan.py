@@ -7,28 +7,6 @@ from netaddr import IPNetwork
 from commons import YamlConf
 
 
-
-pr_blue = '\033[94m'
-pr_red = '\033[31m'
-pr_yellow = '\033[93m'
-pr_green = '\033[96m'
-
-
-def nmapScan(Host, Port):  # Create the function, this fucntion does the scanning
-    nmScan = nmap.PortScanner()
-    nmScan.scan(Host, str(Port))
-    state = nmScan[Host]["tcp"][int(Port)]["state"]
-    protocol = nmScan[Host]["tcp"][int(Port)]["name"]
-    product = nmScan[Host]["tcp"][int(Port)]["product"]
-    version = nmScan[Host]["tcp"][int(Port)]["version"]
-    extrainfo = nmScan[Host]["tcp"][int(Port)]["extrainfo"]
-    result = "%s[*] %s%s tcp/%s %s[%s]\n%s%s %s" % (
-        pr_red, pr_blue, Host, Port, pr_green, state, pr_yellow, product, version)
-    if extrainfo:
-        result += "os: %s" % extrainfo
-    print(result)
-
-
 def c_Scan(hosts, ports):
     '''
     -sS:隐藏扫描
